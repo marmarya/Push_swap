@@ -29,22 +29,38 @@ void    print_stack(t_node *stack)
     }
 }
 
-// void    ft_list_making(int argc, char **argv, t_node **stack_a)
-// {
-//     int i;
-//     int j;
-//     int data;
-//     // t_node *push;
+int     getelem(t_node  *node, int n)
+{
+    t_node *ptr;
+    ptr = node;
+    int count;
+    count = 0;
+    while (ptr != NULL)
+    {
+        if(count == n)
+            return (ptr)->data;
+        count++;
+        ptr = ptr->next;
+    }
+    return (0);
+}
 
-//     i = 1;
-//     // printf("argv---%s", *argv);
-//     while (*argv[i] != '\0')
-//     {
-//         // printf("check\n");
-//         data = ft_atoi(argv[i]);
-//         ft_push_end(stack_a, data);
-//         i++;
-//     }
-//     // printf("stack_a\n");
-//     print_stack(*stack_a);
-// }
+int     stack_size(t_node *node)
+{
+    int     i;
+    t_node  *ptr;
+
+    ptr = node;
+    i = 0;
+    if (ptr == NULL)
+        return (0);
+    else
+    {
+        while (ptr != NULL)
+        {
+            i++;
+            ptr = ptr->next;
+        }
+        return (i);
+    }
+}

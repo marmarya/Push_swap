@@ -1,28 +1,61 @@
 #include "../include.h"
 
+int     ft_checks(char **argv, int n)
+{
+    int i;
+    int j;
+
+    i = 1;
+    while (i < n)
+    {
+        j = 0;
+        while (argv[i][j])
+        {
+            if (argv[i][j] == '-' && ((argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9')))
+            {
+                ++j;
+                continue ;
+            }
+            else if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+                return (1);
+            ++j;
+        }
+        // if (!ft_atoi(argv[i] >= -2147483648 && ft_atoi(argv[i] <= 2147483647)))
+        //     return (1);
+        ++i;
+    }
+    return (0);
+}
+
 int main(int argc, char **argv)
 {
     t_node  *stack_a;
     t_node  *stack_b;
-    int     *num;
+    int     i;
 
-    num = malloc(4 * (argc - 1));
-    if (!num)
+    stack_a = NULL;
+    stack_b = NULL;
+    if (argc == 1)
         return (0);
-    stack_a = init_stack();
-	stack_b = init_stack();
-    ft_helper(argc, stack_a, stack_b, num);
-    free(num);
+    if (ft_checks(argv, argc))
+    {
+        write(1, "Error\n", 6);
+        return (0);
+    }
+    i = argc;
+    while (i > 1)
+    {
+        ft_push(&stack_a, ft_atoi(argv[i - 1]));
+        --i;
+    }
+    if (check_dubs(stack_a))
+    {
+        write(1, "Error\n", 6);
+        return (0);
+    }
+    if (!stack_check(stack_a))
+        ft_choose_sorting(&stack_a, &stack_b, argc);
+    print_stack(stack_a);
+    return (0);
 }
 
-void    ft_helper(int   argc, t_stack *stack_a, t_stack *stack_b, int num)
-{
-    ft_init(stack_a, num, argc - 1);
-    if (argc <= 6)
-    {
-        ft_choose_sorting(stack_a, stack_b, argc - 1);
-        return ;
-    }
-    ft_push_to_b(stack_b, stack_a);
-    ft_main(stack_a, stack_b);
-}

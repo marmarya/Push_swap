@@ -4,14 +4,16 @@ void    ft_choose_sorting(t_node **stack_a, t_node **stack_b, int argc)
 {
     if (argc == 2) // 1 tiv
         return ;
-    if (argc == 3) // 2 tiv
+    else if (argc == 3) // 2 tiv
         ft_sort2(stack_a);
-    if (argc == 4) // 3 tiv
+    else if (argc == 4) // 3 tiv
         ft_sort3(stack_a);
-    if (argc == 5)
+    else if (argc == 5)
         ft_sort4(stack_a, stack_b);
-    if (argc == 6)
+    else if (argc == 6)
         ft_sort5(stack_a, stack_b);
+    else if (argc >= 7 && argc <= 501)
+        main_sorting(stack_a, stack_b, argc - 1);
 }
 
 void    ft_sort2(t_node **stack_a)

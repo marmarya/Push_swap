@@ -49,6 +49,18 @@ void        ft_sort5(t_node **stack_a, t_node ** stack_b);
 t_stack     *init_stack(void);
 void        ft_init(t_stack *stack_a, int *num, int size);
 void        ft_operations(t_stack *stack, int   i);
+int         check_dubs(t_node *stack_a);
+int         stack_check(t_node *node);
+int         getelem(t_node  *node, int n);
+int         stack_size(t_node *node);
+int         ft_checks(char **argv, int n);
+void        merge_sort(int  arr[], int l, int r);
+void        ft_merge(int    arr[], int l, int m, int r) ;
+void        main_sorting(t_node **stack_a, t_node **stack_b, int n);
+static int		ft_is_space(char c);
+int				ft_atoi(const char *str);
+
+
 
 
 #endif //include.h 
