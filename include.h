@@ -56,7 +56,7 @@ int         stack_size(t_node *node);
 int         ft_checks(char **argv, int n);
 void        merge_sort(int  arr[], int l, int r);
 void        ft_merge(int    arr[], int l, int m, int r) ;
-void        main_sorting(t_node **stack_a, t_node **stack_b, int n);
+void        main_sorting(t_node **stack_a, t_node **stack_b, int num);
 static int		ft_is_space(char c);
 int				ft_atoi(const char *str);
 
